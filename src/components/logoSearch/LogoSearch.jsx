@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import './LogoSearch.css'
 import Logo from '../../img/logo.png'
 import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
-import ChipInput from 'material-ui-chip-input';
+
 import { getPosts, getPostsBySearch } from '../../features/posts/postsSlice';
 
 
