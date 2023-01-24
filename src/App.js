@@ -101,7 +101,7 @@ function App() {
           setListOfCreatorFollowers={setListOfCreatorFollowers}
           listOfCreatorFollowing={listOfCreatorFollowing} 
           setListOfCreatorFollowing={setListOfCreatorFollowing}
-       />} />
+       />} >
         <Route path='' element={ <PostSide 
           currentId={currentId}
           setCurrentId={setCurrentId}
