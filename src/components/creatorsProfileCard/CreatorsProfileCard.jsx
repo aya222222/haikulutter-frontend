@@ -95,7 +95,7 @@ const CreatorsProfileCard = ({
         </div>
 
    
-        <div className="mt-0 mr-10 mb-2.5 ml-0 flex justify-end gap-8 text-center">
+        <div className="mt-0 md:mr-10 mb-2.5 md:ml-0 flex md:justify-end justify-around gap-8 text-center">
             <div className="text-base">
             {creatorsProfile?.follower?.length ? <Link to={`/posts/${creatorId}/follower`} style={{ textDecoration: 'none' }}
                onClick={
