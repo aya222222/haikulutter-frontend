@@ -118,9 +118,11 @@ const createOrUpdateHaiku = () => {
          gap-4 cursor-pointer 
         '  onClick={fetchUserPosts}>
           <div>
-            <img className='inline-block h-16 w-16 
-              rounded-full  object-cover
-            ' src={post.profileIconImg} alt="" />
+            {post?.profileIconImg ? <img className='inline-block h-16 w-16 
+              rounded-full  object-cover' 
+              src={post?.profileIconImg} alt="" />
+            : <img className="w-5" src={cameraIcon } alt="" />
+            }
           </div>
           
           <div className="w-fit cursor-pointer" >
