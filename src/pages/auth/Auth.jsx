@@ -67,15 +67,16 @@ const Auth = () => {
    
     return (
 
-    <section className='flex flex-col items-center justify-center m-auto relative'>
+    <section className='flex flex-col items-center justify-center m-auto phone:w-auto w-full relative'>
     { signUp ? ( 
       <>
-    <form className="border-slate-500 border border-solid  mb-1 flex items-center justify-center flex-col gap-10 bg-bg-color rounded-3xl p-5 "
+    <form className="w-full border-slate-500 phone:border border-solid  mb-1 flex items-center justify-center 
+      flex-col gap-10 bg-bg-color rounded-3xl p-5 "
       onSubmit={handleSubmit}
     >
 
      <h4 className='text-2xl'>Signup</h4>   
-    <div className='flex gap-4 w-full'>
+    <div className='flex gap-4 w-full phone:flex-row flex-col '>
     <input 
     
          required 
@@ -190,8 +191,10 @@ const Auth = () => {
     </form>     
    
     <h6>Already have an account? &nbsp;&nbsp;<span className="cursor-pointer hover:text-slate-500" onClick={()=>setSignUp(false)}>Login.</span></h6>
-    </> ) : (<>
-      <form className="w-full border-slate-500 border border-solid  mb-1 flex items-center justify-center flex-col gap-10 bg-bg-color rounded-3xl p-6 "
+    </> ) 
+    :
+     (<>
+      <form className="w-full border-slate-500  phone:border border-solid  mb-1 flex items-center justify-center flex-col gap-10 bg-bg-color rounded-3xl p-6 "
            onSubmit={handleSubmit}>
     <h4 className='text-2xl'>Login</h4>   
     

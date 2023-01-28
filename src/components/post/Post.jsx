@@ -8,7 +8,7 @@ import { deletePost, likePost, getUserPosts, getPost } from '../../features/post
 import { getCreatorProfile } from '../../features/creatorProfile/creatorProfileSlice';
 import Comments from '../comments/Comments';
 import { useEffect } from 'react';
-
+import cameraIcon from '../../img/camera-icon.png'
 
 
 const Post = ({ 
@@ -121,7 +121,7 @@ const createOrUpdateHaiku = () => {
             {post?.profileIconImg ? <img className='inline-block h-16 w-16 
               rounded-full  object-cover' 
               src={post?.profileIconImg} alt="" />
-            : <img className="w-5" src={cameraIcon } alt="" />
+            : <img className="w-5" src={cameraIcon} alt="" />
             }
           </div>
           
