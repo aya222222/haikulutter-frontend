@@ -22,8 +22,8 @@ const ProfileSide = (
   listOfCreatorFollowing,
   setListOfCreatorFollowing,
  }) => {
-  const user = JSON.parse(localStorage.getItem('profile'));
-
+  const user = JSON.parse(localStorage?.getItem('profile'));
+  
   return (
 
 
