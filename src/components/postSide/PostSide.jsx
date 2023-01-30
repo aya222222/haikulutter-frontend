@@ -9,10 +9,12 @@ import ProfileCard from '../profileCard/ProfileCard';
 import CreatorsProfileCard from '../creatorsProfileCard/CreatorsProfileCard';
 import MoonLoader from "react-spinners/MoonLoader";
 // import { getPosts, getUserPosts, getPostsBySearch, getPost } from '../../actions/postAction' 
-import { getPosts } from '../../features/posts/postsSlice';
+import { getPost, getPosts, getUserPosts } from '../../features/posts/postsSlice';
 
 import { AiFillTags } from 'react-icons/ai';
 import LogoSearch from '../logoSearch/LogoSearch';
+import { getCreatorProfile } from '../../features/creatorProfile/creatorProfileSlice';
+
 
 
 const PostSide = ({
@@ -42,7 +44,8 @@ const PostSide = ({
 
   // const [fetchPosts, setFetchPosts] = useState(posts);
 //  console.log('state ' + JSON.stringify(useSelector((state) => state.postsReducer))  )
-  console.log('posts is ' + JSON.stringify(posts))
+
+  const existingProfile = useSelector((state) => state.profile);
   const query = useQuery();
   const dispatch = useDispatch();
   const page = query.get('page') || 0;
@@ -51,7 +54,8 @@ const PostSide = ({
   const [currentPage, setCurrentPage] = useState(1);
   const {creator} = useParams();
   const {postId} = useParams();
-
+  const creatorsProfile = useSelector((state) => state.creatorProfile)
+  const creatorId = creatorsProfile?.userId
 
  
 function useQuery() {
@@ -72,6 +76,18 @@ useEffect(() => {
 
 }, [dispatch])
 
+//if icon image is changed, it update every icon image on posts 
+useEffect(() => {
+  if(creator){
+    dispatch(getCreatorProfile(creator))
+    dispatch(getUserPosts({creator: creatorId, page:0}))
+   
+  }else if(postId){
+    dispatch(getPost(postId))
+  }else{
+    dispatch(getPosts(0))
+  }
+}, [existingProfile?.profileIconImg])
 // useEffect(() => {
 //   // if(effectRan.current === false){
 //   if(creator){

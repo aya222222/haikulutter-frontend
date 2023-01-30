@@ -8,6 +8,7 @@ import cover from '../../img/cover.jpg';
 import DeleteAlertModal from '../../components/deleteAlertModal/DeleteAlertModal';
 import './EditProfile.css'
 import FileBase from 'react-file-base64';
+import { getPosts } from '../../features/posts/postsSlice';
 
 const EditProfile = ({ 
   setOpenProfileModal, openProfileModal,
@@ -75,7 +76,7 @@ const handleSubmit = async (e) => {
   //update profile
   if(profileId){
     dispatch(updateProfile({profileId, profileData}));
-    
+
    console.log('edited!!' + profileId)
    }else{
     console.log('createprofile dispatched')

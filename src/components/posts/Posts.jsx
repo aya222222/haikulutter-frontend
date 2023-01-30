@@ -7,6 +7,8 @@ import LikeList from '../../pages/likeList/LikeList'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { useParams } from 'react-router-dom';
+import { getCreatorProfile } from '../../features/creatorProfile/creatorProfileSlice'
+import { getPost, getPosts } from '../../features/posts/postsSlice'
 // import { getPosts } from '../../actions/postAction'
 
 const Posts = ({
@@ -25,10 +27,13 @@ const Posts = ({
 }) => {
   const [likeList, setLikeList] = useState([])
   // const {posts} = useSelector((state) => state.postsReducer);
+  const existingProfile = useSelector((state) => state.profile);
   console.log('posts in posts page is '+ JSON.stringify(posts))
   let creatorsPosts;
+  const {postId} = useParams();
   const {creator} = useParams();
   const dispatch = useDispatch();
+
   console.log('openlikeModal is ' + openLikeModal)
 //   if(creator){
 //     creatorsPosts = posts.filter(post => post.creator == creator)
@@ -41,9 +46,7 @@ const Posts = ({
 
 //  let currentPosts = posts.slice(firstPostIndex, lastPostIndex);
  
-// useEffect(() => {
-//   dispatch(getPosts())
-// }, [])
+
 
  return (
   <>

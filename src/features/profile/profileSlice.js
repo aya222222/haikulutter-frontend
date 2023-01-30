@@ -3,6 +3,8 @@ import { applyMiddleware, createAsyncThunk, createSlice } from '@reduxjs/toolkit
 
 const initialState = {
     loggedIn: true,
+    profileBgImg:  null,
+    profileIconImg: null,
     following: [],
     follower: []
 }
@@ -139,7 +141,9 @@ export const profileSlice = createSlice({
                     
                     })       
            .addCase(logoutProfile.fulfilled, (state, action) => {
-              state.loggedIn = false
+              state.loggedIn = false;
+              state.profileBgImg =  null;
+              state.profileIconImg = null;
            
            })
            .addCase(logoutProfile.rejected, (state, action) => {

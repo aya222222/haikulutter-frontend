@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Post.css'
 import { FiHeart , FiMessageCircle, FiEdit, FiTrash2 } from "react-icons/fi";
 import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import { deletePost, likePost, getUserPosts, getPost } from '../../features/posts/postsSlice'
+import { deletePost, likePost, getUserPosts, getPost, getPosts } from '../../features/posts/postsSlice'
 import { getCreatorProfile } from '../../features/creatorProfile/creatorProfileSlice';
 import Comments from '../comments/Comments';
-import { useEffect } from 'react';
 import cameraIcon from '../../img/camera-icon.png'
 
 
@@ -31,7 +30,7 @@ const Post = ({
  const userId = user?.result?._id || user?.result?.sub
  let hasLikedPost = likes?.find((user) => user?.userId === userId) 
  console.log("hasliked " + likes)
- 
+ let existingProfile = useSelector((state) => state.profile)
  
  function useQuery() {
    return new URLSearchParams(useLocation().search);
@@ -42,13 +41,14 @@ const Post = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {postId} = useParams();
+
   console.log('postId is ' + postId)
   //  const query = useQuery();
   //  const page = query.get('page') || 0;
   const loggedInUser = useSelector((state) => state.profile)
   // const creatorIconImg = useSelector((state) => state.creatorProfileReducer.profileIconImg)
   
-  
+
 
  const toggleLike = async () => {
    
