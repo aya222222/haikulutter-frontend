@@ -2,7 +2,7 @@ import * as api from '../../api'
 import { applyMiddleware, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    loggedIn: true,
+    loggedIn: false,
     profileBgImg:  null,
     profileIconImg: null,
     following: [],
