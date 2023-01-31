@@ -92,7 +92,7 @@ export const profileSlice = createSlice({
             
             })
         .addCase(getProfile.fulfilled, (state, action) => {
-            return  {...state, ...action.payload}
+            return  {...state,loggedIn:true, ...action.payload}
           
        
            })
