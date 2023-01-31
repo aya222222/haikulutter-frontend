@@ -67,7 +67,7 @@ console.log('user is ' +  useSelector((state) => JSON.stringify(state.profile)))
   useEffect(() => {
   
     // if(effectRan.current === false){
-    if(existingProfile?.loggedIn){
+    if(existingProfile?.loggedIn == true){
       dispatch(getProfile())
       console.log('getprofile invoked')
       console.log('profile id is ' + profileId)
