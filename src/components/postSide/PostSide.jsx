@@ -65,10 +65,10 @@ function useQuery() {
 
 
 useEffect(() => {
-  // if(!creator){
+  if(!creator){
     dispatch(getPosts(0))
-
-  // }
+   console.log('postside invoked')
+  }
   //   else if((searchTags || searchQuery )){
   //   dispatch(getPostsBySearch({ search: searchQuery, tags:  searchTags? searchTags : null}));
 

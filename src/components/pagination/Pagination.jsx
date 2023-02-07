@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLinkClickHandler, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getPosts,  } from '../../features/posts/postsSlice';
+import { getPosts, getUserPosts,  } from '../../features/posts/postsSlice';
 import "./pagination.css"
 
 const Pagination = ({postsPerPage, setCurrentPage, page}) => {
@@ -38,6 +38,13 @@ const Pagination = ({postsPerPage, setCurrentPage, page}) => {
       pages.push(i);
     }
 
+    const handlePageClick = (pageNum) => {
+      if(creator){
+        dispatch(getUserPosts({creator:creator, page:pageNum-1} ))
+      } else {
+        dispatch(getPosts(pageNum-1))
+      }
+    }
     // for(let i = 1; i <= Math.ceil(posts?.length / postsPerPage); i++) {
     // pages.push(i);
     // }
@@ -67,7 +74,7 @@ const Pagination = ({postsPerPage, setCurrentPage, page}) => {
          onMouseEnter={index==page && handleMouseEnter}
          onMouseLeave={index==page && handleMouseLeave}
          key={index}  to={creator ? `/posts/${creator}?page=${pageNum-1}`: `/posts?page=${pageNum-1}`} 
-           onClick={()=>dispatch(getPosts(pageNum-1))}
+           onClick={() => handlePageClick(pageNum)}
          >
           {pageNum}
           </Link>
