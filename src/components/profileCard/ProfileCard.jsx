@@ -10,6 +10,7 @@ import cameraIcon from '../../img/camera-icon.png'
 import { getUserPosts } from '../../features/posts/postsSlice';
 import { getCreatorProfile } from '../../features/creatorProfile/creatorProfileSlice'; 
 import EditProfileBtn from '../editProfileButton/EditProfileBtn';
+import { getProfile } from '../../features/profile/profileSlice';
 
 const ProfileCard = (
   {
@@ -28,12 +29,14 @@ const ProfileCard = (
   const userId = user?.result?._id || user?.result?.sub
   // const loggedInUser = useSelector((state) => state.profileReducer?.userId == userId );
   const existingProfile = useSelector((state) => state.profile);
+  
   console.log('existingprofile is '  + JSON.stringify(existingProfile))
   const username = user?.result?.username || user?.result?.name;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const id = userId;
+
+
 
   const fetchUserPosts =  () => {
     dispatch(getUserPosts({creator:userId, page:0}))
@@ -42,6 +45,14 @@ const ProfileCard = (
     navigate(`/posts/${userId}`)
   }
 
+  console.log('logged in user in card ' +  JSON.stringify(existingProfile))
+  console.log('local storage ' + JSON.stringify(user))
+
+  useEffect(() => {
+    if(existingProfile?.loggedIn){
+      dispatch(getProfile())
+    }
+   }, []);
 
   return (
     <div className='xl:text-sm text-xs rounded-3xl border-slate-500 border-solid border overflow-x-clip lg:block hidden '>

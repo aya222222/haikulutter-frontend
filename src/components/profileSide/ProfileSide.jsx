@@ -4,8 +4,9 @@ import ProfileCard from '../profileCard/ProfileCard'
 import PostBtnCard from '../postBtnCard/PostBtnCard'
 import Menu from '../menu/Menu'
 import './ProfileSide.css'
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getProfile } from '../../features/profile/profileSlice'
 
 
 const ProfileSide = (
@@ -24,15 +25,19 @@ const ProfileSide = (
   listOfCreatorFollowing,
   setListOfCreatorFollowing,
  }) => {
-  // const user = JSON.parse(localStorage?.getItem('profile'));
-  // const [user, setUser] = useState(JSON.parse(localStorage?.getItem('profile')))
-  const existingProfile = useSelector((state) => state.profile);
 
+  const loggedInUserId = useSelector(state => state.auth?.authData?.result?._id)
+ 
+
+  const dispatch = useDispatch();
+  
   // useEffect(() => {
-  //   setUser(JSON.parse(localStorage?.getItem('profile')))
-  // }, [user?.result?._id]);
+  //     dispatch(getProfile())
+  //     }
 
+  //  , [dispatch]);
 
+   
   return (
 
 
@@ -46,7 +51,7 @@ const ProfileSide = (
 
     </div>
  
-      {existingProfile.loggedIn ? (
+      {loggedInUserId ?  (
         <>
           <ProfileCard className="hidden lg:flex"
             openProfileModal={openProfileModal}

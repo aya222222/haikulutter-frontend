@@ -9,6 +9,7 @@ export const login = createAsyncThunk(
     'auth/login', async(formData) => {
         try {
             const { data } = await api.logIn(formData);
+            console.log('logged in data is ' + JSON.stringify(data))
             return data;
 
         } catch (error) {
@@ -36,6 +37,7 @@ export const logOut = createAsyncThunk(
     'auth/logOut', async() => {
         try {
             localStorage.clear();        
+            console.log('local storage is cleared')
 
         } catch (error) {
            console.log(error)   

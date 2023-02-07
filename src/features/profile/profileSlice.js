@@ -3,10 +3,14 @@ import { applyMiddleware, createAsyncThunk, createSlice } from '@reduxjs/toolkit
 
 const initialState = {
     loggedIn: false,
+    userId: '',
+    username: '',
     profileBgImg:  null,
     profileIconImg: null,
+    bio: '',
     following: [],
-    follower: []
+    follower: [],
+    totalPosts: null,
 }
 
 export const getProfile = createAsyncThunk(
@@ -92,8 +96,19 @@ export const profileSlice = createSlice({
             
             })
         .addCase(getProfile.fulfilled, (state, action) => {
-            return  {...state,loggedIn:true, ...action.payload}
-          
+            // return  {loggedIn:true, ...action.payload}
+        //    state.loggedIn =  true;
+           state.userId = action.payload.userId;
+           state.username = action.payload.username;
+           state.profileBgImg = action.payload.profileBgImg;
+           state.profileIconImg = action.payload.profileIconImg;
+           state.bio = action.payload.bio;
+           state.follower = action.payload.follower;
+           state.following = action.payload.following;
+           state.totalPosts = action.payload.totalPosts;
+
+
+
        
            })
         .addCase(getProfile.rejected, (state, action) => {
@@ -105,7 +120,14 @@ export const profileSlice = createSlice({
                  
                  })     
         .addCase(createProfile.fulfilled, (state, action) => {
-            return  {...state, ...action.payload}
+            // return  {...state, ...action.payload}
+           state.username = action.payload.username;
+           state.profileBgImg = action.payload.profileBgImg;
+           state.profileIconImg = action.payload.profileIconImg;
+           state.bio = action.payload.bio;
+           state.follower = action.payload.follower;
+           state.following = action.payload.following;
+           state.totalPosts = action.payload.totalPosts;
             
            })
         .addCase(createProfile.rejected, (state, action) => {
@@ -117,8 +139,14 @@ export const profileSlice = createSlice({
                  
                  })             
         .addCase(updateProfile.fulfilled, (state, action) => {
-            return  {...state, ...action.payload}
-          
+            // return  {...state, ...action.payload}
+            state.username = action.payload.username;
+            state.profileBgImg = action.payload.profileBgImg;
+            state.profileIconImg = action.payload.profileIconImg;
+            state.bio = action.payload.bio;
+            state.follower = action.payload.follower;
+            state.following = action.payload.following;
+            state.totalPosts = action.payload.totalPosts;
            })
         .addCase(updateProfile.rejected, (state, action) => {
             console.log(action.error)
@@ -142,8 +170,15 @@ export const profileSlice = createSlice({
                     })       
            .addCase(logoutProfile.fulfilled, (state, action) => {
               state.loggedIn = false;
+              state.userId = '';
+              state.username = '';
               state.profileBgImg =  null;
               state.profileIconImg = null;
+              state.bio = '';
+              state.following = [];
+              state.follower = [];
+              state.totalPosts = null;
+  
            
            })
            .addCase(logoutProfile.rejected, (state, action) => {

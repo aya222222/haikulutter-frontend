@@ -47,8 +47,6 @@ const Post = ({
   //  const page = query.get('page') || 0;
   const loggedInUser = useSelector((state) => state.profile)
   // const creatorIconImg = useSelector((state) => state.creatorProfileReducer.profileIconImg)
-  
-
 
  const toggleLike = async () => {
    

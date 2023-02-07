@@ -7,8 +7,9 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import { signup, login, googleAuth } from '../../features/auth/authSlice';
-import { logInProfile } from '../../features/profile/profileSlice';
+import { getProfile, logInProfile } from '../../features/profile/profileSlice';
 import { useSelector } from 'react-redux';
+
 
 
 const Auth = () => {
@@ -31,9 +32,10 @@ const Auth = () => {
        }else{
         console.log('profile data' +JSON.stringify(formData))
         dispatch(login(formData))
- 
+
+   
        }
-       
+     
        dispatch(logInProfile());
        navigate('/');
     }
@@ -141,7 +143,7 @@ const Auth = () => {
         <span 
           className="absolute right-[5%] top-[25%] cursor-pointer "
           onClick={()=>setShowPwd((prev) => !prev)}
-        >{showPwd ?<RiEyeCloseLine /> : <RiEyeFill />}
+        >{showPwd ? <RiEyeCloseLine /> : <RiEyeFill />}
         </span> 
       {/* </div> */}
       </div>

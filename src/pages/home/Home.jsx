@@ -19,9 +19,6 @@ import Menu from '../../components/menu/Menu'
 // import { useNavigate, useLocation } from 'react-router-dom';
 
 
-// function useQuery() {
-//   return new URLSearchParams(useLocation().search);
-// }
 
 
 const Home = ({openHaikuModal,
@@ -45,44 +42,8 @@ const Home = ({openHaikuModal,
   setListOfCreatorFollowers,
   setListOfCreatorFollowing,
 }) => {
-  const user = JSON.parse(localStorage.getItem('profile'))
-  const userId = user?.result?._id || user?.result?.sub;
-  const existingProfile = useSelector((state) => state.profile);
-  const creatorProfile = useSelector((state) => state.creatorProfile);
 
-  const profileId = existingProfile?._id;
   
-console.log('profile id is ' + profileId)
-console.log('user is ' +  useSelector((state) => JSON.stringify(state.profile)))
-
-
-  const dispatch = useDispatch();
-  const effectRan = useRef(false);
-
-
-
-
- 
-  
-  useEffect(() => {
-  
-    // if(effectRan.current === false){
-    if(existingProfile?.loggedIn == true){
-      dispatch(getProfile())
-      console.log('getprofile invoked')
-      console.log('profile id is ' + profileId)
-    }
-     
-
-      }
-   
-    // return () => {
-    //   effectRan.current = true;
-    // };
-  //  }
-   , [dispatch, userId]);
-
- 
   return (
     <>
    <div >
