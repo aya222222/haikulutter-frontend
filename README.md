@@ -32,18 +32,26 @@ User can post a haiku, and delete/update/comment/like it.
 
 
 ### Search by word, or tags
+
+User can search posts by word, or tags.
 ![haiku-demo2](https://user-images.githubusercontent.com/80786703/215338852-ba80f3b6-975c-4d54-a334-1d21c09b4f99.gif)
 
 
 ### Follow or unfollow other users
+
+User can follow and unfollow other users.
 ![haiku-demo3](https://user-images.githubusercontent.com/80786703/215339346-1ce46bb4-5d06-4c4d-b669-5800f7f3459f.gif)
 
 
 ### Create profile
-put gif image
+
+User can create profile, set Icon and background image. 
+![haiku-demo6](https://user-images.githubusercontent.com/80786703/217595719-2d18c38a-50b9-4079-b123-e43e9d4fb6af.gif)
+
+
+
 
 ### Sign in/Sign out
-put gif image
-
+![haiku-demo4](https://user-images.githubusercontent.com/80786703/217585247-4104e7be-a4b3-4492-b7f0-6e3072acac72.gif)
 
 
