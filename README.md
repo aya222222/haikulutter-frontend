@@ -40,10 +40,11 @@ User can post a haiku, and delete/update/comment/like it.
 
 
 ### Create profile
-put gif image
+https://user-images.githubusercontent.com/80786703/217595335-34fc8ac1-81a5-4d79-ae04-38a49c8fffbf.mp4
+
+
 
 ### Sign in/Sign out
-put gif image
-
+![haiku-demo4](https://user-images.githubusercontent.com/80786703/217585247-4104e7be-a4b3-4492-b7f0-6e3072acac72.gif)
 
 
