@@ -121,6 +121,7 @@ export const profileSlice = createSlice({
                  })     
         .addCase(createProfile.fulfilled, (state, action) => {
             // return  {...state, ...action.payload}
+           state.userId = action.payload.userId;
            state.username = action.payload.username;
            state.profileBgImg = action.payload.profileBgImg;
            state.profileIconImg = action.payload.profileIconImg;

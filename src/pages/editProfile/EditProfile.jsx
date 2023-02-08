@@ -28,7 +28,7 @@ const profileBgRef = useRef();
 
 //use profileData from getProfile()
 const existingProfile = useSelector((state) => state.profile) ;
-const profileId = existingProfile._id ;
+const profileId = existingProfile?.userId ;
 console.log('profile id in edit is  ' + profileId)
 // const loggedInUser = useSelector((state) => state.profileReducer?.userId == userId );
 
@@ -52,7 +52,7 @@ useEffect(() => {
   if(effectRan.current === false){
   if(profileId){
    
-    console.log('existingprofile' + JSON.stringify(existingProfile));
+    console.log('existingprofile in edit' + JSON.stringify(existingProfile));
     console.log('id is ' + profileId)
     // const {bio, profileBgImg, profileIconImg} = {...existingProfile};
     // setProfileData({bio, profileBgImg, profileIconImg});
@@ -221,7 +221,7 @@ const checkTextExists = () => {
               setEditProfileFlag(true)
           }
            }></span>
-           {  profileData.profileBgImg ? <img className="w-full absolute rounded-3xl h-full object-cover object-[50% 25%]" src={profileData.profileBgImg}/> : null} 
+           {  profileData?.profileBgImg ? <img className="w-full absolute rounded-3xl h-full object-cover object-[50% 25%]" src={profileData?.profileBgImg}/> : null} 
           </div>
          )}
         </div> 
@@ -254,7 +254,7 @@ const checkTextExists = () => {
             }}
             />
         </div>
-        {profileData.profileIconImg && (
+        {profileData?.profileIconImg && (
           // previewProfileIconImg 
           <div className="absolute rounded-full w-full h-full left-1/2 -bottom-1/2 -translate-y-1/2 -translate-x-1/2">
             <span className="fa-solid fa-xmark absolute w-[20px] top-[60%] right-[-14%] z-20 hover:text-slate-500 cursor-pointer"  
@@ -265,7 +265,7 @@ const checkTextExists = () => {
           }
            }></span>
            
-           { profileData.profileIconImg ? <img className="w-full h-full rounded-full absolute object-cover z-10 left-1/2 -bottom-1/2 -translate-y-1/2 -translate-x-1/2 inline-block" src={profileData.profileIconImg}/> : null} 
+           { profileData?.profileIconImg ? <img className="w-full h-full rounded-full absolute object-cover z-10 left-1/2 -bottom-1/2 -translate-y-1/2 -translate-x-1/2 inline-block" src={profileData?.profileIconImg}/> : null} 
           </div>
          )}
         </div>  
@@ -288,6 +288,7 @@ const checkTextExists = () => {
               className="textInput w-full p-2.5 outline-none border-none rounded-md bg-card-color mt-1" 
               value={ profileData.bio }
               onChange={(e) => {
+                e.preventDefault();
                 setProfileData({...profileData, bio:e.target.value})
                 setEditProfileFlag(true)
                }

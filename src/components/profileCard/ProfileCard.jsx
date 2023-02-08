@@ -52,7 +52,7 @@ const ProfileCard = (
     if(existingProfile?.loggedIn){
       dispatch(getProfile())
     }
-   }, []);
+   }, [existingProfile?.userId]);
 
   return (
     <div className='xl:text-sm text-xs rounded-3xl border-slate-500 border-solid border overflow-x-clip lg:block hidden '>

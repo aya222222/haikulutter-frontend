@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API = axios.create({ baseURL: 'http://localhost:5000'})
-const API = axios.create({ baseURL: 'https://haikulutter-backend.onrender.com'})
+const API = axios.create({ baseURL: 'http://localhost:5000'})
+// const API = axios.create({ baseURL: 'https://haikulutter-backend.onrender.com'})
 
 //send token to backend so backend middleware can varify we are actually logged in.
 API.interceptors.request.use((req) => {
