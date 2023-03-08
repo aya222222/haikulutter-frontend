@@ -1,27 +1,30 @@
-import React , { useState, useEffect, useRef }from 'react'
-import '../home/Home.css'
-import ProfileSide from '../../components/profileSide/ProfileSide'
-import PostSide from '../../components/postSide/PostSide'
-import HaikuModal from '../haikuModal/HaikuModal'
-import EditProfile from '../editProfile/EditProfile'
-import RightSide from '../../components/rightSide/RightSide'
-import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useLocation, useParams } from 'react-router-dom'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// import { getPosts } from '../../actions/postAction' 
-import { getProfile, createProfile } from '../../features/profile/profileSlice'
-import FollowList from '../../components/followAndPostsCards/FollowList'
+import React, { useState, useEffect, useRef } from "react";
+import "../home/Home.css";
+import ProfileSide from "../../components/profileSide/ProfileSide";
+import PostSide from "../../components/postSide/PostSide";
+import HaikuModal from "../haikuModal/HaikuModal";
+import EditProfile from "../editProfile/EditProfile";
+import RightSide from "../../components/rightSide/RightSide";
+import { useDispatch, useSelector } from "react-redux";
+import { Outlet, useLocation, useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+// import { getPosts } from '../../actions/postAction'
+import { getProfile, createProfile } from "../../features/profile/profileSlice";
+import FollowList from "../../components/followAndPostsCards/FollowList";
 
-import { getCreatorProfile } from '../../actions/creatorProfileAction'
-import LikeList from '../likeList/LikeList'
-import Menu from '../../components/menu/Menu'
+import { getCreatorProfile } from "../../actions/creatorProfileAction";
+import LikeList from "../likeList/LikeList";
+import Menu from "../../components/menu/Menu";
 // import Pagination from '../../components/pagination/Pagination'
 // import { useNavigate, useLocation } from 'react-router-dom';
 
-
-
-
-const Home = ({openHaikuModal,
+const Home = ({
+  openHaikuModal,
   setOpenHaikuModal,
   openProfileModal,
   setOpenProfileModal,
@@ -42,39 +45,36 @@ const Home = ({openHaikuModal,
   setListOfCreatorFollowers,
   setListOfCreatorFollowing,
 }) => {
-
-  
   return (
     <>
-   <div >
-    <div className="Home">
-    <ProfileSide className=""
-      openHaikuModal={openHaikuModal} 
-      setOpenHaikuModal={setOpenHaikuModal}
-      openProfileModal={openProfileModal}
-      setOpenProfileModal={setOpenProfileModal}
-      openLikeModal={openLikeModal}
-      setOpenLikeModal={setOpenLikeModal}
-
-      tags={tags}
-      setTags={setTags}
-      listOfFollowers={listOfFollowers}
-      setListOfFollowers={setListOfFollowers}
-      listOfFollowing={listOfFollowing}
-      setListOfFollowing={setListOfFollowing}
-      listOfCreatorFollowers={listOfCreatorFollowers} 
-      setListOfCreatorFollowers={setListOfCreatorFollowers}
-      listOfCreatorFollowing={listOfCreatorFollowing} 
-      setListOfCreatorFollowing={setListOfCreatorFollowing}
-
-     />
-     <Outlet />
-{/* <FollowList  
+      <div>
+        <div className="Home">
+          <ProfileSide
+            className=""
+            openHaikuModal={openHaikuModal}
+            setOpenHaikuModal={setOpenHaikuModal}
+            openProfileModal={openProfileModal}
+            setOpenProfileModal={setOpenProfileModal}
+            openLikeModal={openLikeModal}
+            setOpenLikeModal={setOpenLikeModal}
+            tags={tags}
+            setTags={setTags}
+            listOfFollowers={listOfFollowers}
+            setListOfFollowers={setListOfFollowers}
+            listOfFollowing={listOfFollowing}
+            setListOfFollowing={setListOfFollowing}
+            listOfCreatorFollowers={listOfCreatorFollowers}
+            setListOfCreatorFollowers={setListOfCreatorFollowers}
+            listOfCreatorFollowing={listOfCreatorFollowing}
+            setListOfCreatorFollowing={setListOfCreatorFollowing}
+          />
+          <Outlet />
+          {/* <FollowList  
       followersList={followersList}
       followingList = {followingList}
      /> */}
 
-   {/* {pathName == '/posts' && (<PostSide 
+          {/* {pathName == '/posts' && (<PostSide 
          currentId={currentId}
          setCurrentId={setCurrentId}
          openHaikuModal={openHaikuModal} 
@@ -83,55 +83,49 @@ const Home = ({openHaikuModal,
          editFlag={editFlag} setEditFlag={setEditFlag}
         /> ) } */}
 
-    {/* {pathName == (`/${userId}/follower` || `/${userId}/following`) && 
+          {/* {pathName == (`/${userId}/follower` || `/${userId}/following`) && 
     (<FollowList  
       followersList={followersList}
       followingList = {followingList}
      />)    
   }  */}
-    
-    <RightSide />
-   
-     </div>
-    
-   
-   </div>
-   {openHaikuModal && <HaikuModal
-    openHaikuModal={openHaikuModal} 
-    setOpenHaikuModal={setOpenHaikuModal} 
-    currentId={currentId}
-    setCurrentId={setCurrentId}
-    editFlag={editFlag} setEditFlag={setEditFlag}
 
-   />
- 
-   
-  
-}
-  
+          <RightSide />
+        </div>
+      </div>
+      {openHaikuModal && (
+        <HaikuModal
+          openHaikuModal={openHaikuModal}
+          setOpenHaikuModal={setOpenHaikuModal}
+          currentId={currentId}
+          setCurrentId={setCurrentId}
+          editFlag={editFlag}
+          setEditFlag={setEditFlag}
+        />
+      )}
 
-{openProfileModal && <EditProfile 
-        openProfileModal={openProfileModal} 
-        setOpenProfileModal={setOpenProfileModal}
-        // openDeleteAlertModal={openDeleteAlertModal}
-        // setOpenDeleteAlertModal={setOpenDeleteAlertModal}
-        // clickOutSide={clickOutSide}
-        // checkTextExists={checkTextExists}
-        // text={text}
-        // setText={setText}
-        // userName={userName} 
-        // setUserName={setUserName}
-        // clickCloseModal={clickCloseModal}
-        // bio={bio}
-        // setBio={setBio}
+      {openProfileModal && (
+        <EditProfile
+          openProfileModal={openProfileModal}
+          setOpenProfileModal={setOpenProfileModal}
+          // openDeleteAlertModal={openDeleteAlertModal}
+          // setOpenDeleteAlertModal={setOpenDeleteAlertModal}
+          // clickOutSide={clickOutSide}
+          // checkTextExists={checkTextExists}
+          // text={text}
+          // setText={setText}
+          // userName={userName}
+          // setUserName={setUserName}
+          // clickCloseModal={clickCloseModal}
+          // bio={bio}
+          // setBio={setBio}
+        />
+      )}
+      <div className="md:hidden">
+        <Menu />
+      </div>
+    </>
+  );
+};
 
-       />
-}
-<div className='md:hidden'>
- <Menu />
-</div>
-   </>
-  )
-}
-
-export default Home
+export default Home;
