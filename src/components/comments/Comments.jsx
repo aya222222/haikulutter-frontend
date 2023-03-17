@@ -9,7 +9,6 @@ import { useEffect } from "react";
 
 const Comments = ({ post }) => {
   const [comment, setComment] = useState("");
-  const [clickedDots, setClickedDots] = useState(null);
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const navigate = useNavigate();
@@ -46,8 +45,6 @@ const Comments = ({ post }) => {
               index={index}
               postId={post._id}
               commentId={comment._id}
-              clickedDots={clickedDots}
-              setClickedDots={setClickedDots}
             />
           );
         })}

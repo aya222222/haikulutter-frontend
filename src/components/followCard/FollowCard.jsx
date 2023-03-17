@@ -4,7 +4,7 @@ import "./FollowCard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { followOrUnfollowCreator } from "../../features/profile/profileSlice";
-// import { getCreatorProfile } from '../../actions/creatorProfileAction'
+
 import { getCreatorProfile } from "../../features/creatorProfile/creatorProfileSlice";
 import { updateTargetCreatorFollowStatus } from "../../features/targetCreatorProfile/targetCreatorProfileSlice";
 import cameraIcon from "../../img/camera-icon.png";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "./AuthBtnCard.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { logoutProfile } from "../../features/profile/profileSlice";
 import { logOut } from "../../features/auth/authSlice";
@@ -39,9 +39,9 @@ const AuthBtnCard = () => {
   return (
     <>
       <div className="md:flex hidden justify-end gap-4">
+        {/* if it is google auth, it shows icon */}
         {loggedInUser && (
           <div className="ml-[150px]">
-            {/* <h6>{user?.result?.name}</h6> */}
             <img
               className="w-12 rounded-full"
               src={loggedInUser?.result?.picture}
@@ -52,14 +52,13 @@ const AuthBtnCard = () => {
         {loggedInUser ? (
           <button
             className="rounded-3xl bg-border-color
-     text-bg-color px-2.5 py-1 
-     border-none outline-none  text-xl
-     transition-all ease-out duration-200
-     cursor-pointer 
-     hover:text-white
-     hover:outline-2  hover:outline-solid hover:outline-slate-200
-     hover:bg-bg-color
-     "
+                text-bg-color px-2.5 py-1 
+                border-none outline-none  text-xl
+                transition-all ease-out duration-200
+                cursor-pointer 
+                hover:text-white
+                hover:outline-2  hover:outline-solid hover:outline-slate-200
+                hover:bg-bg-color"
             onClick={() => {
               logout();
             }}
@@ -69,14 +68,13 @@ const AuthBtnCard = () => {
         ) : (
           <button
             className="rounded-3xl bg-border-color
-     text-bg-color px-2.5 py-1 
-     border-none outline-none  text-xl
-     transition-all ease-out duration-200
-     cursor-pointer 
-     hover:text-white
-     hover:outline-2  hover:outline-solid hover:outline-slate-200
-     hover:bg-bg-color
-     "
+            text-bg-color px-2.5 py-1 
+            border-none outline-none  text-xl
+            transition-all ease-out duration-200
+            cursor-pointer 
+            hover:text-white
+            hover:outline-2  hover:outline-solid hover:outline-slate-200
+            hover:bg-bg-color"
             onClick={login}
           >
             Sign in

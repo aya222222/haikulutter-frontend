@@ -24,17 +24,9 @@ const ProfileSide = ({
   listOfCreatorFollowing,
   setListOfCreatorFollowing,
 }) => {
-  const loggedInUserId = useSelector(
-    (state) => state.auth?.authData?.result?._id
-  );
+  const result = useSelector((state) => state.auth?.authData?.result);
 
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //     dispatch(getProfile())
-  //     }
-
-  //  , [dispatch]);
+  const loggedInUserId = result?._id || result?.sub;
 
   return (
     <div className="hidden md:w-[20%] md:flex md:flex-col gap-4">

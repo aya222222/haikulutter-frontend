@@ -1,22 +1,20 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts } from "../../features/posts/postsSlice";
-// import { getCreatorProfile } from '../../actions/creatorProfileAction';
+
 import { getCreatorProfile } from "../../features/creatorProfile/creatorProfileSlice";
 import CommentFunctions from "../commentFunctions/CommentFunctions";
 import moment from "moment";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { useEffect } from "react";
 
-const Comment = ({
-  comment,
-  index,
-  postId,
-  commentId,
-  clickedDots,
-  setClickedDots,
-}) => {
+const Comment = ({ comment, index, postId, commentId }) => {
+  const loggedInUserId = useSelector(
+    (state) => state.auth?.authData?.result?._id
+  );
+
+  console.log("user in localstorage is " + loggedInUserId);
   const ref = useRef();
   console.log("comment is " + JSON.stringify(comment));
   console.log("text is " + JSON.stringify(comment));
@@ -35,9 +33,7 @@ const Comment = ({
     navigate(`/posts/${comment?.userId}`);
   };
 
-  const toggleClick = (e) => {
-    setClickedDots(index);
-
+  const toggleClick = () => {
     //if click dots again, it toggle showFunc
     setShowFuncs((prev) => !prev);
   };
@@ -92,18 +88,20 @@ const Comment = ({
 
           {/* <span className='commentedTime'>{moment(comment.createdAt).fromNow()}</span> */}
         </div>
-        <div
-          ref={ref}
-          className="cursor-pointer relative"
-          onClick={(e) => toggleClick(e)}
-        >
-          <FiMoreHorizontal />
-          <CommentFunctions
-            showFuncs={showFuncs}
-            postId={postId}
-            commentId={commentId}
-          />
-        </div>
+        {loggedInUserId == comment?.userId && (
+          <div
+            ref={ref}
+            className="cursor-pointer relative"
+            onClick={(e) => toggleClick(e)}
+          >
+            <FiMoreHorizontal />
+            <CommentFunctions
+              showFuncs={showFuncs}
+              postId={postId}
+              commentId={commentId}
+            />
+          </div>
+        )}
       </div>
 
       {/* </div> */}

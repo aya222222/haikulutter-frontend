@@ -47,12 +47,13 @@ const Auth = () => {
     console.log(res.credential, "login ");
     console.log(`clientId is ${res?.clientId}`);
     let result = jwt_decode(res?.credential);
+    console.log("result" + result);
     let token = res?.credential;
     // console.log(result);
 
     try {
       dispatch(googleAuth({ result, token }));
-      dispatch({ type: "AUTH", data: { result, token } });
+      // dispatch({ type: "AUTH", data: { result, token } });
       //route to home if you login successfully.
       navigate("/");
     } catch (error) {
@@ -70,7 +71,7 @@ const Auth = () => {
         <>
           <form
             className="w-full border-slate-500 phone:border border-solid  mb-1 flex items-center justify-center 
-      flex-col gap-10 bg-bg-color rounded-3xl p-5 "
+               flex-col gap-10 bg-bg-color rounded-3xl p-5 "
             onSubmit={handleSubmit}
           >
             <h4 className="text-2xl">Signup</h4>
@@ -79,7 +80,7 @@ const Auth = () => {
                 required
                 type="text"
                 className="h-8 bg-card-color rounded-md pl-2
-         focus:outline-border-color focus:outline focus:outline-1"
+                 focus:outline-border-color focus:outline focus:outline-1"
                 name="firstname"
                 //  value={firstname}
                 placeholder="First name"
@@ -89,7 +90,7 @@ const Auth = () => {
                 required
                 type="text"
                 className="h-8 bg-card-color rounded-md pl-2
-         focus:outline-border-color focus:outline focus:outline-1"
+                 focus:outline-border-color focus:outline focus:outline-1"
                 name="lastname"
                 //  value={lastname}
                 placeholder="Last name"
@@ -101,7 +102,7 @@ const Auth = () => {
                 required
                 type="text"
                 className="h-8 w-full bg-card-color rounded-md pl-2
-        focus:outline-border-color focus:outline focus:outline-1"
+                 focus:outline-border-color focus:outline focus:outline-1"
                 name="username"
                 // value={username}
                 placeholder="Username"
@@ -115,7 +116,7 @@ const Auth = () => {
                 required
                 type="email"
                 className="h-8 w-full bg-card-color rounded-md pl-2
-        focus:outline-border-color focus:outline focus:outline-1"
+                 focus:outline-border-color focus:outline focus:outline-1"
                 name="email"
                 // value={email}
                 placeholder="Email"
@@ -128,7 +129,7 @@ const Auth = () => {
                 required
                 type={showPwd ? "text" : "password"}
                 className="h-8 w-full bg-card-color rounded-md pl-2
-          focus:outline-border-color focus:outline focus:outline-1 "
+                    focus:outline-border-color focus:outline focus:outline-1 "
                 name="password"
                 // value={password}
                 placeholder="Password"
@@ -148,7 +149,7 @@ const Auth = () => {
                 required
                 type={showConfirmPwd ? "text" : "password"}
                 className="h-8 w-full bg-card-color rounded-md pl-2
-          focus:outline-border-color focus:outline focus:outline-1"
+                 focus:outline-border-color focus:outline focus:outline-1"
                 name="confirmPwd"
                 // value={confirmPwd}
                 placeholder="Confirm password"
@@ -166,13 +167,13 @@ const Auth = () => {
             <div className="mt-5 flex-col items-center flex gap-4 w-full">
               <button
                 className="rounded-3xl bg-border-color
-     text-bg-color px-2.5 py-1 w-[80%]
-     border-none outline-none  text-xl
-     transition-all ease-out duration-200
-     cursor-pointer 
-     hover:text-white
-     hover:outline-2  hover:outline-solid hover:outline-slate-200
-     hover:bg-bg-color"
+                  text-bg-color px-2.5 py-1 w-[80%]
+                  border-none outline-none  text-xl
+                  transition-all ease-out duration-200
+                  cursor-pointer 
+                  hover:text-white
+                  hover:outline-2  hover:outline-solid hover:outline-slate-200
+                  hover:bg-bg-color"
                 type="submit"
               >
                 SignUp
@@ -214,7 +215,7 @@ const Auth = () => {
                 required
                 type="text"
                 className="h-8  w-full bg-card-color rounded-md pl-2
-        focus:outline-border-color focus:outline focus:outline-1"
+                   focus:outline-border-color focus:outline focus:outline-1"
                 name="email"
                 // value={username}
                 placeholder="Email"
@@ -227,7 +228,7 @@ const Auth = () => {
                 required
                 type={showPwd ? "text" : "password"}
                 className="h-8 w-full bg-card-color rounded-md pl-2
-        focus:outline-border-color focus:outline focus:outline-1"
+                  focus:outline-border-color focus:outline focus:outline-1"
                 // value={password}
                 name="password"
                 placeholder="Password"
@@ -244,13 +245,13 @@ const Auth = () => {
             <div className="flex-col items-center flex gap-4 w-full">
               <button
                 className="mt-5 rounded-3xl bg-border-color
-     text-bg-color px-2.5 py-1  w-full
-     border-none outline-none  text-xl
-     transition-all ease-out duration-200
-     cursor-pointer 
-     hover:text-white
-     hover:outline-2  hover:outline-solid hover:outline-slate-200
-     hover:bg-bg-color"
+                  text-bg-color px-2.5 py-1  w-full
+                  border-none outline-none  text-xl
+                  transition-all ease-out duration-200
+                  cursor-pointer 
+                  hover:text-white
+                  hover:outline-2  hover:outline-solid hover:outline-slate-200
+                  hover:bg-bg-color"
               >
                 Login
               </button>

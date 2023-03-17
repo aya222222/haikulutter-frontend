@@ -1,12 +1,6 @@
-import React, { useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import FollowCard from "../followCard/FollowCard";
-import { useParams } from "react-router-dom";
 import "./FollowAndPostsCards.css";
-import ProfileSide from "../profileSide/ProfileSide";
-import RightSide from "../rightSide/RightSide";
-import { useEffect } from "react";
-import { getProfile } from "../../actions/profileAction";
 import CreatorsProfileCard from "../creatorsProfileCard/CreatorsProfileCard";
 import LogoSearch from "../logoSearch/LogoSearch";
 //followersList, followingList,  listOfFollowers

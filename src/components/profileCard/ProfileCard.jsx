@@ -24,31 +24,33 @@ const ProfileCard = ({
   listOfCreatorFollowing,
   setListOfCreatorFollowing,
 }) => {
-  const user = JSON.parse(localStorage.getItem("profile"));
-  const userId = user?.result?._id || user?.result?.sub;
+  const result = useSelector((state) => state.auth?.authData?.result);
+
+  const loggedInUserId = result?._id || result?.sub;
+
   // const loggedInUser = useSelector((state) => state.profileReducer?.userId == userId );
   const existingProfile = useSelector((state) => state.profile);
 
   console.log("existingprofile is " + JSON.stringify(existingProfile));
-  const username = user?.result?.username || user?.result?.name;
+  const username = result?.username || result?.name;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const fetchUserPosts = () => {
-    dispatch(getUserPosts({ creator: userId, page: 0 }));
-    dispatch(getCreatorProfile(userId));
+    dispatch(getUserPosts({ creator: loggedInUserId, page: 0 }));
+    dispatch(getCreatorProfile(loggedInUserId));
     // console.log('posts creator is ' + post.creator);
-    navigate(`/posts/${userId}`);
+    navigate(`/posts/${loggedInUserId}`);
   };
 
   console.log("logged in user in card " + JSON.stringify(existingProfile));
-  console.log("local storage " + JSON.stringify(user));
 
+  //if user logged in, show profile
   useEffect(() => {
-    if (existingProfile?.loggedIn) {
+    if (loggedInUserId) {
       dispatch(getProfile());
     }
-  }, [existingProfile?.userId]);
+  }, [loggedInUserId]);
 
   return (
     <div className="xl:text-sm text-xs rounded-3xl border-slate-500 border-solid border overflow-x-clip lg:block hidden ">
@@ -103,7 +105,7 @@ const ProfileCard = ({
         <div className="">
           {existingProfile?.follower?.length ? (
             <Link
-              to={`/posts/${userId}/follower`}
+              to={`/posts/${loggedInUserId}/follower`}
               style={{ textDecoration: "none" }}
               onClick={() => {
                 setListOfFollowers(true);
@@ -127,7 +129,7 @@ const ProfileCard = ({
         <div className="">
           {existingProfile?.following?.length ? (
             <Link
-              to={`/posts/${userId}/following`}
+              to={`/posts/${loggedInUserId}/following`}
               style={{ textDecoration: "none" }}
               onClick={() => {
                 setListOfFollowers(false);
@@ -149,7 +151,7 @@ const ProfileCard = ({
         <div className="">
           {existingProfile?.totalPosts ? (
             <Link
-              to={`/posts/${userId}`}
+              to={`/posts/${loggedInUserId}`}
               style={{ textDecoration: "none" }}
               onClick={fetchUserPosts}
             >

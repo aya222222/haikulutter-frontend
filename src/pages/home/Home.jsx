@@ -1,24 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
 import "../home/Home.css";
 import ProfileSide from "../../components/profileSide/ProfileSide";
-import PostSide from "../../components/postSide/PostSide";
+
 import HaikuModal from "../haikuModal/HaikuModal";
 import EditProfile from "../editProfile/EditProfile";
 import RightSide from "../../components/rightSide/RightSide";
-import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useLocation, useParams } from "react-router-dom";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-// import { getPosts } from '../../actions/postAction'
-import { getProfile, createProfile } from "../../features/profile/profileSlice";
-import FollowList from "../../components/followAndPostsCards/FollowList";
 
-import { getCreatorProfile } from "../../actions/creatorProfileAction";
-import LikeList from "../likeList/LikeList";
+import { Outlet } from "react-router-dom";
+
 import Menu from "../../components/menu/Menu";
 // import Pagination from '../../components/pagination/Pagination'
 // import { useNavigate, useLocation } from 'react-router-dom';

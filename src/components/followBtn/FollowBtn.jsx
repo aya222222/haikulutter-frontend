@@ -1,9 +1,5 @@
 import React from "react";
 import "./FollowBtn.css";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { followOrUnfollowCreator } from "../../actions/profileAction";
-import { updateTargetCreatorFollowStatus } from "../../actions/creatorProfileAction";
 
 const FollowBtn = ({ followingStatus, toggleFollow }) => {
   return (
